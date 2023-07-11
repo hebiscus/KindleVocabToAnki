@@ -7,6 +7,6 @@ plugins only operate on one card a time. <br> I have more than 700 looked up wor
 2. Retrieving stem of looked up words along with book name and context each word was used in.
 3. Converting above data into .xls file (Excel). <br>
 **Far into the future**↓
-5. Using WordsAPI (https://www.wordsapi.com/#try) to automatically add a definition to all looked up words in Excel vocab sheet. <br>
+5. Using WordsAPI (https://www.wordsapi.com) to automatically add a definition to all looked up words in Excel vocab sheet. <br>
 **Even more far into the future**↓
 6. Create a website, so others can do it too :)
