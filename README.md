@@ -4,12 +4,18 @@ plugins only operate on one card a time. <br> I have more than 700 looked up wor
 == Idea!
 ## Goals of this app:
 1. Reading from vocab.db through Python with SQLite. ☑️
-2. Retrieving stem of looked up words along with book name and context each word was used in.
+2. Retrieving stem of looked up words along with context each word was used in. ☑️
   - [x] fetch stem words and context
   - [x] organise, so context matches word
   - [x] get rid of repeated words
-3. Converting above data into .xls file (Excel). <br>
+3. Converting above data into .xls file (Excel).  ☑️ <br>
 **Far into the future**↓
 4. Using WordsAPI (https://www.wordsapi.com) to automatically add a definition to all looked up words in Excel vocab sheet. <br>
 **Even more far into the future**↓
 5. Create a website, so others can do it too :)
+## Progress updates:
+Every Kindle user has in their device little file named vocab.db and in it there's a table named LOOKUPS with this data:
+![image](https://github.com/hebiscus/vocabConverter/assets/107350293/c1e72308-0c87-4fd2-b0cd-ed2c08278d7b) <br><br>
+What I wanted to retrieve and convert to Excel file is only the word_key (without the "en:" stem) and usage (context sentence each word was highlighted in the book) columns. <br><br>
+Result so far (no word duplicates and "en: stem removed): <br><br>
+![image](https://github.com/hebiscus/vocabConverter/assets/107350293/0936ee3a-25ff-44c8-abac-5f92d30c050a)
