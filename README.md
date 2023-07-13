@@ -6,8 +6,8 @@ plugins only operate on one card a time. <br> I have more than 700 looked up wor
 1. Reading from vocab.db through Python with SQLite. ☑️
 2. Retrieving stem of looked up words along with book name and context each word was used in.
   - [x] fetch stem words and context
-  - [ ] organise, so context matches word
-  - [ ] get rid of repeated words
+  - [x] organise, so context matches word
+  - [x] get rid of repeated words
 3. Converting above data into .xls file (Excel). <br>
 **Far into the future**↓
 4. Using WordsAPI (https://www.wordsapi.com) to automatically add a definition to all looked up words in Excel vocab sheet. <br>
