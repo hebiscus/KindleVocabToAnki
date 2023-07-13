@@ -1,4 +1,4 @@
-# vocabConverter
+# Kindle Vocab To Anki
 Kindle stores word lookups in vocab.db file which I'd want to use for my Anki. <br> Kindle does not store definitions along with looked up words and existing Anki
 plugins only operate on one card a time. <br> I have more than 700 looked up words saved in my Anki. <br>
 == Idea!
