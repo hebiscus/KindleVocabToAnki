@@ -19,11 +19,6 @@ cursor = connection.cursor()
 # list_three()
 
 
-
-# cursor.execute("SELECT word, usage FROM WORDS INNER JOIN LOOKUPS on LOOKUPS.timestamp == WORDS.timestamp")
-
-# print(cursor.fetchall())
-
 # cursor.execute("SELECT word_key, COUNT(*) AS CNT FROM LOOKUPS GROUP BY word_key HAVING COUNT(*) > 1")
 
 # cursor.execute("SELECT DISTINCT word_key FROM LOOKUPS")
@@ -32,15 +27,13 @@ cursor = connection.cursor()
 
 # cursor.execute("SELECT COUNT(DISTINCT word_key), usage FROM LOOKUPS")
 
-cursor.execute("SELECT word_key,usage, COUNT(*) as cnt FROM LOOKUPS GROUP BY word_key HAVING COUNT(*) > 1")
+cursor.execute("DELETE FROM LOOKUPS WHERE EXISTS (SELECT 1 FROM LOOKUPS P2 WHERE LOOKUPS.word_key = p2.word_key AND LOOKUPS.rowid > p2.rowid)")
 
+cursor.execute("SELECT COUNT(word_key) FROM LOOKUPS")
 print(cursor.fetchall())
 
-cursor.execute("SELECT COUNT(DISTINCT word_key) FROM LOOKUPS")
+cursor.execute("SELECT word_key, usage FROM LOOKUPS")
 print(cursor.fetchall())
-# cursor.execute("SELECT * FROM LOOKUPS WHERE word_key NOT IN( SELECT MAX(word_key) FROM LOOKUPS GROUP BY word_key)")
-
-# print(cursor.fetchall())
 
 connection.commit()
 
