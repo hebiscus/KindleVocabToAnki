@@ -1,4 +1,5 @@
 import sqlite3
+import pandas as pandas
 
 connection = sqlite3.connect("vocab.db")
 
@@ -30,10 +31,23 @@ cursor = connection.cursor()
 cursor.execute("DELETE FROM LOOKUPS WHERE EXISTS (SELECT 1 FROM LOOKUPS P2 WHERE LOOKUPS.word_key = p2.word_key AND LOOKUPS.rowid > p2.rowid)")
 
 cursor.execute("SELECT COUNT(word_key) FROM LOOKUPS")
-print(cursor.fetchall())
+# print(cursor.fetchall())
 
 cursor.execute("SELECT word_key, usage FROM LOOKUPS")
-print(cursor.fetchall())
+nonDuplicates = cursor.fetchall()
+
+def printNonDuplicates():
+    for word in nonDuplicates:
+        print(word)
+
+printNonDuplicates()
+
+def ImportToExcel():
+    df = pandas.DataFrame(nonDuplicates, columns=["Word", "Context"])
+    df.to_excel('result.xlsx', index = False)
+
+
+ImportToExcel()
 
 connection.commit()
 
