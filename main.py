@@ -1,6 +1,8 @@
 import sqlite3
 import pandas as pandas
 from openpyxl import load_workbook
+import config
+import http.client
 
 connection = sqlite3.connect("vocab.db")
 
@@ -39,7 +41,22 @@ ImportToExcel()
 wb = load_workbook(filename="result.xlsx")
 workSheet = wb.active
 
-for column in workSheet.iter_cols(min_row=2, max_col=1, values_only=True):
-    for value in column:
-        print(value)
+def iterateOverWords():
+    for column in workSheet.iter_cols(min_row=2, max_col=1, values_only=True):
+        for value in column:
+            print(value)
 
+def connectToAPI():
+    conn = http.client.HTTPSConnection("wordsapiv1.p.rapidapi.com")
+
+    headers = {
+        'X-RapidAPI-Key': config.api_key,
+        'X-RapidAPI-Host': "wordsapiv1.p.rapidapi.com"
+    }
+
+    conn.request("GET", "/words/hatchback/definitions", headers=headers)
+
+    res = conn.getresponse()
+    data = res.read()
+
+    print(data.decode("utf-8"))
