@@ -1,5 +1,6 @@
 import sqlite3
 import pandas as pandas
+from openpyxl import load_workbook
 
 connection = sqlite3.connect("vocab.db")
 
@@ -19,6 +20,10 @@ deleteEN()
 getUpdatedWords()
 nonDuplicates = cursor.fetchall()
 
+connection.commit()
+
+connection.close()
+
 def printNonDuplicates():
     for word in nonDuplicates:
         print(word)
@@ -31,6 +36,10 @@ def ImportToExcel():
 
 ImportToExcel()
 
-connection.commit()
+wb = load_workbook(filename="result.xlsx")
+workSheet = wb.active
 
-connection.close()
+for column in workSheet.iter_cols(min_row=2, max_col=1, values_only=True):
+    for value in column:
+        print(value)
+
