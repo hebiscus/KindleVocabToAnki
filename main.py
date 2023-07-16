@@ -3,6 +3,7 @@ import pandas as pandas
 from openpyxl import load_workbook
 import config
 import http.client
+import requests
 
 connection = sqlite3.connect("vocab.db")
 
@@ -46,17 +47,11 @@ def iterateOverWords():
         for value in column:
             print(value)
 
-def connectToAPI():
-    conn = http.client.HTTPSConnection("wordsapiv1.p.rapidapi.com")
 
-    headers = {
-        'X-RapidAPI-Key': config.api_key,
-        'X-RapidAPI-Host': "wordsapiv1.p.rapidapi.com"
-    }
+def getDefinitions():
+    response = requests.get("https://api.dictionaryapi.dev/api/v2/entries/en/simper")
 
-    conn.request("GET", "/words/hatchback/definitions", headers=headers)
+    wordData = response.json()[0]["meanings"]
 
-    res = conn.getresponse()
-    data = res.read()
-
-    print(data.decode("utf-8"))
+    for wordType in wordData:
+        print(wordType["definitions"][0]["definition"])
