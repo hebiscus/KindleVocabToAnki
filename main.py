@@ -31,27 +31,48 @@ def printNonDuplicates():
     for word in nonDuplicates:
         print(word)
 
-# printNonDuplicates()
+
+def getDefinitions(row):
+    word = row['Word']
+    response = requests.get("https://api.dictionaryapi.dev/api/v2/entries/en/" + word)
+
+    if (isinstance(response.json(), dict)):
+        return "definition not found"
+
+    wordData = response.json()[0]["meanings"]
+    wordDefinitions = ""
+
+    for wordType in wordData:
+        wordDefinitions += wordType["definitions"][0]["definition"]
+    
+    return wordDefinitions
+
 
 def ImportToExcel():
     df = pandas.DataFrame(nonDuplicates, columns=["Word", "Context"])
+    df['Definition'] = df.apply(getDefinitions, axis=1)
     df.to_excel('result.xlsx', index = False)
 
 ImportToExcel()
 
-wb = load_workbook(filename="result.xlsx")
-workSheet = wb.active
-
-def iterateOverWords():
-    for column in workSheet.iter_cols(min_row=2, max_col=1, values_only=True):
-        for value in column:
-            print(value)
 
 
-def getDefinitions():
-    response = requests.get("https://api.dictionaryapi.dev/api/v2/entries/en/simper")
+# def addDefinitions():
+#     wb = load_workbook(filename="result.xlsx")
+#     workSheet = wb.active
 
-    wordData = response.json()[0]["meanings"]
+#     defCell = workSheet['C1']
+#     defCell.value = "Definitions"
 
-    for wordType in wordData:
-        print(wordType["definitions"][0]["definition"])
+#     wordColumn = workSheet['A'] - workSheet['A1']
+
+#     for index, word in enumerate(wordColumn, start=2):
+#         print(str(word.value))
+#         wordDefinitions = getDefinitions(word)
+#         workSheet['C'+str(index)] = wordDefinitions
+
+
+#     wb.save('definitions.xlsx')
+
+# addDefinitions()
+
