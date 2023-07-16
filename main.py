@@ -43,7 +43,7 @@ def getDefinitions(row):
     wordDefinitions = ""
 
     for wordType in wordData:
-        wordDefinitions += wordType["definitions"][0]["definition"]
+        wordDefinitions += " / " + wordType["definitions"][0]["definition"]
     
     return wordDefinitions
 
