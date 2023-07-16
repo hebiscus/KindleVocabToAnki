@@ -50,7 +50,7 @@ def getDefinitions(row):
 
 def ImportToExcel():
     df = pandas.DataFrame(nonDuplicates, columns=["Word", "Context"])
-    df['Definition'] = df.apply(getDefinitions, axis=1)
+    df['Definitions'] = df.apply(getDefinitions, axis=1)
     df.to_excel('result.xlsx', index = False)
 
 ImportToExcel()
