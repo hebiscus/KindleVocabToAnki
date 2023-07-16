@@ -18,7 +18,7 @@ Every Kindle user has in their device little file named vocab.db and in it there
 What I wanted to retrieve and convert to Excel file is only the word_key (without the "en:" stem) and usage (context sentence each word was highlighted in the book) columns. <br>
 ### Update #1 <br> 
 no word duplicates and "en:" stem removed, export to xlsx thanks to pandas python data analysis library <br><br>
-![image](https://github.com/hebiscus/vocabConverter/assets/107350293/24dff3be-8e60-49e6-a502-b67ee3ac7a35) <br><br>
+![image](https://github.com/hebiscus/vocabConverter/assets/107350293/24dff3be-8e60-49e6-a502-b67ee3ac7a35) <br>
 ### Update #2 
 Unfortunately Words API I've planned to use for definitions initially has it's free tier limited to 2.5k requests a day, which is not nearly enough. I've resolved to Free Dictionary API and with it comes another set of issues. It's dabatabase of definitions is built on Google Dictionary API - not ideal. Out of 756 words I've tested it on 44 definitions were not found. Is it terrible, especially since my set of words looked up is old-fashioned? No. Nevertheless, it's not perfect. Another issue is speed. The same set of words took around 5-7 minutes to complete fetching all definitions. Again, not terrible, but not great either. Any other dictionary API is not generous with it's free plan. 
 ### Final result:
