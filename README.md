@@ -10,7 +10,7 @@ plugins only operate on one card a time. <br> I have more than 700 looked up wor
   - [x] get rid of repeated words
 3. Converting above data into .xlsx file (Excel).  ☑️ <br>
 **Far into the future**↓
-4. Using WordsAPI (https://www.wordsapi.com) to automatically add a definition to all looked up words in Excel vocab sheet. <br>
+4. Using Free Dictionary API (https://dictionaryapi.dev/) to automatically add a definition to all looked up words in Excel vocab sheet. <br>
 **Even more far into the future**↓
 5. Create a website, so others can do it too :)
 ## Progress updates:
