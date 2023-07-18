@@ -2,6 +2,8 @@
 Kindle stores word lookups in vocab.db file which I'd want to use for my Anki. <br> Kindle does not store definitions along with looked up words and existing Anki
 plugins only operate on one card a time. <br> I have more than 700 looked up words saved in my Anki. <br>
 == Idea!
+## Instructions:
+<i>soon</i>
 ## Goals of this app:
 1. Reading from vocab.db through Python with SQLite. ☑️
 2. Retrieving stem of looked up words along with context each word was used in. ☑️
@@ -23,4 +25,7 @@ no word duplicates and "en:" stem removed, export to xlsx thanks to pandas pytho
 Unfortunately Words API I've planned to use for definitions initially has it's free tier limited to 2.5k requests a day, which is not nearly enough. I've resolved to Free Dictionary API and with it comes another set of issues. It's dabatabase of definitions is built on Google Dictionary API - not ideal. Out of 756 words I've tested it on 44 definitions were not found. Is it terrible, especially since my set of words looked up is old-fashioned? No. Nevertheless, it's not perfect. Another issue is speed. The same set of words took around 5-7 minutes to complete fetching all definitions. Again, not terrible, but not great either. Any other dictionary API is not generous with it's free plan. 
 ### Final result:
 ![image](https://github.com/hebiscus/KindleVocabToAnki/assets/107350293/e81d1c24-c1dd-4402-8853-e81fc769a004)
+### Anki result:
+![image](https://github.com/hebiscus/KindleVocabToAnki/assets/107350293/fd5e8c08-f581-4dab-a87b-4c172f056924)
+
 
