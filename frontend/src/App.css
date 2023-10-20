@@ -7,4 +7,16 @@
     font-family: 'Montserrat', sans-serif;
     padding: 0;
     margin: 0;
+    
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin-inline: 3em;
+}
+
+footer {
+    margin-top: auto;
 }

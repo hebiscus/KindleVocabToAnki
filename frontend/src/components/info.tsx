@@ -1,8 +1,8 @@
 
 function InfoPage() {
-    return (
-        <div>info</div>
-    )
+  return (
+    <div>info</div>
+  )
 }
 
 export default InfoPage;
