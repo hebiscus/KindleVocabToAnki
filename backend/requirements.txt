@@ -1,0 +1,4 @@
+django>=4.2.6,<5.0.0
+djangorestframework
+django-cors-headers
+pandas
