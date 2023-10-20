@@ -1,15 +1,20 @@
+import { useState } from 'react'
 import './App.css'
+import Footer from './components/footer'
 import Navbar from './components/navbar'
+import Homepage from './components/homepage'
+import InfoPage from './components/info'
 
 function App() {
+  const [homepage, setHomepage] = useState(true)
+  
+  const showHomepage = () => setHomepage(!homepage)
 
   return (
     <>
-    <Navbar />
-    <h1 className="text-3xl font-bold underline text-red-500">
-      <div className="bg-black">test</div>
-      Hello world!
-    </h1>
+      <Navbar showHomepage={showHomepage} homepage={homepage}/>
+      {homepage ? <Homepage /> : <InfoPage />}
+      <Footer />
     </>
   )
 }
