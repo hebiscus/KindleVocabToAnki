@@ -4,6 +4,8 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 import sqlite3
 import tempfile
+import os
+import pandas
 
 @api_view(['POST'])
 def upload_vocab(request):
@@ -27,8 +29,21 @@ def upload_vocab(request):
       connection.commit()
       connection.close()
 
-      print(nonDuplicates)
+      df = pandas.DataFrame(nonDuplicates, columns=["Word", "Context"])
+      df['Definitions'] = df.apply(getDefinitions, axis=1)
+      df.to_csv('result.csv', index = False)
+
     except Exception as e:
       return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-  
+    finally:
+      temp_file.close()
+      os.unlink(temp_file.name)
+
   return JsonResponse({"message": "test message"})
+
+
+def getDefinitions(row):
+    word = row['Word']
+    wordDefinitions = ""
+    
+    return "yes"
