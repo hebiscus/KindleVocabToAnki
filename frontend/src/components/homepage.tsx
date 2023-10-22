@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 function Homepage() {
-  const [selectedFile, setSelectedFile] = useState<File>();
+  const [selectedFile, setSelectedFile] = useState();
+  const [fileDownload, setFileDownload] = useState();
 
   const uploadVocab = async(e: React.FormEvent) => {
     e.preventDefault();
@@ -13,17 +14,21 @@ function Homepage() {
       method: 'POST',
       body: data,
     })
-      .then(response => response.text())
-      .then(result => console.log(result))
+      .then(response => response.blob())
+      .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        setFileDownload(url)
+        })
       .catch(error => console.log('error', error));
   }
 
   return (
     <>
-      <form >
+      <form>
         <input type="file" onChange={(e) => setSelectedFile(e.target.files[0])}/>
-        <button onClick={uploadVocab}>yes</button>
+        <button type="submit" onClick={uploadVocab}>Upload</button>
       </form>
+      {fileDownload && <a href={fileDownload} download="words.csv">Download</a>}
     </>
   )
 }
