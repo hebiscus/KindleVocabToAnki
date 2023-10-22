@@ -6,6 +6,7 @@ import sqlite3
 import tempfile
 import os
 import pandas
+from dictionary import word_dict
 
 @api_view(['POST'])
 def upload_vocab(request):
@@ -43,7 +44,8 @@ def upload_vocab(request):
 
 
 def getDefinitions(row):
-    word = row['Word']
-    wordDefinitions = ""
+    word = row['Word'].capitalize()
+
+    wordDef = word_dict.get(word, "definition not found")
     
-    return "yes"
+    return wordDef 
