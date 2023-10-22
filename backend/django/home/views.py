@@ -1,4 +1,6 @@
 from django.http import JsonResponse
+from django.http import FileResponse
+from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -40,7 +42,7 @@ def upload_vocab(request):
       temp_file.close()
       os.unlink(temp_file.name)
 
-  return JsonResponse({"message": "test message"})
+  return FileResponse(open('result.csv', 'rb'))
 
 
 def getDefinitions(row):
