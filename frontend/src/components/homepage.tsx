@@ -11,7 +11,7 @@ function Homepage() {
     if (!selectedFile) return;
     data.append("file", selectedFile, "vocab.db");
 
-    fetch("http://localhost:8000/upload", { 
+    fetch("https://kindleanki.fly.dev/upload", { 
       method: 'POST',
       body: data,
     })
