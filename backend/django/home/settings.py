@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-kgvqh8v^*s0f*_j*gfxnd_@3!!8(b4x9o_1as7&3oozoppk@5^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["http://kindlevocabtoanki-production.up.railway.app", "'kindlevocabtoanki-production.up.railway.app'"]
+ALLOWED_HOSTS = ["http://kindlevocabtoanki-production.up.railway.app", "kindlevocabtoanki-production.up.railway.app"]
 
 
 # Application definition
