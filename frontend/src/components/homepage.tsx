@@ -11,7 +11,7 @@ function Homepage() {
     if (!selectedFile) return;
     data.append("file", selectedFile, "vocab.db");
 
-    fetch("https://kindleanki.fly.dev/upload", { 
+    fetch(import.meta.env.VITE_API, { 
       method: 'POST',
       body: data,
     })
