@@ -20,12 +20,9 @@ function Homepage() {
         if (!response.ok) {
           throw new Error("oops some server issue occured or you chose a wrong file!");
         }
-        response.blob()
+        return response.blob()
       })
       .then(blob => {
-        if (blob === undefined) {
-          throw new Error("oops some server issue occured or you chose a wrong file!");
-        }
         const url = window.URL.createObjectURL(blob);
         setFileDownload(url)
         })
