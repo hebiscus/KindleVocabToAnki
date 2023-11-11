@@ -15,7 +15,7 @@ function Navbar({showHomepage, homepage}: NavbarProps) {
     <nav className="flex justify-between my-4">
       <h1 className="text-4xl">Kindle vocab to Anki</h1>
       <button onClick={showHomepage}>
-      {homepage ? homeIcon : infoIcon}
+      {homepage ? infoIcon : homeIcon}
       </button>
     </nav>
   )
