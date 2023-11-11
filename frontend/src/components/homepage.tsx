@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Homepage() {
+function Homepage({ showHomepage }: {showHomepage: () => void}) {
   const [selectedFile, setSelectedFile] = useState<File>();
   const [fileDownload, setFileDownload] = useState<string | undefined>();
   const [errorMsg, setErrorMsg] = useState();
@@ -42,7 +42,11 @@ function Homepage() {
           <button className="text-purple-700 hover:text-purple-800" type="submit" onClick={uploadVocab}>Upload</button>
         </form>
         <span className="text-2xl">Don't know how to get it?</span>
-        <span className="text-2xl">Visit <a className="text-purple-700 underline hover:text-purple-800" href="">Instructions</a></span>
+        <span className="text-2xl">Visit&nbsp;
+          <button onClick={showHomepage}>
+            <span className="text-purple-700 underline hover:text-purple-800">Instructions</span>
+          </button>
+        </span>
         {fileDownload && <a className="text-purple-700 font-semibold my-3 hover:text-purple-800" href={fileDownload} download="words.csv">Download</a>}
       </div>
     </>

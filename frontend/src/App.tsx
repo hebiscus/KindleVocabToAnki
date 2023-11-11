@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <Navbar showHomepage={showHomepage} homepage={homepage}/>
-      {homepage ? <Homepage /> : <InfoPage />}
+      {homepage ? <Homepage showHomepage={showHomepage} /> : <InfoPage />}
       <Footer />
     </>
   )
