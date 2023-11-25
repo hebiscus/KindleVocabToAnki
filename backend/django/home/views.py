@@ -7,6 +7,10 @@ import tempfile
 import os
 import pandas
 from dictionary import word_dict
+import nltk
+nltk.download('wordnet')
+from nltk.corpus import wordnet
+
 
 @api_view(['POST'])
 def upload_vocab(request):
@@ -15,8 +19,8 @@ def upload_vocab(request):
   if vocab_file and vocab_file.name.endswith('.db'):
     try: 
       with tempfile.NamedTemporaryFile(delete=False) as temp_file:
-                for chunk in vocab_file.chunks():
-                    temp_file.write(chunk)
+        for chunk in vocab_file.chunks():
+          temp_file.write(chunk)
       
       connection = sqlite3.connect(temp_file.name)
       cursor = connection.cursor()
@@ -44,8 +48,14 @@ def upload_vocab(request):
 
 
 def getDefinitions(row):
-    word = row['Word'].capitalize()
+    word = row['Word']
+    if " " in word:
+      word = word.replace(" ", "_")
 
-    wordDef = word_dict.get(word, "definition not found")
+    synset_array = wordnet.synsets(word)
+    try:
+      definition = synset_array[0].definition()
+    except IndexError:
+      definition = 'definition not found'
     
-    return wordDef 
+    return definition
