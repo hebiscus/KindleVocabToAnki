@@ -1,10 +1,13 @@
 # Kindle Vocab To Anki
-This app allows you to turn your Kindle english vocabulary (word you highlighted) along with definitions and context for each word into a .csv file, which can be then used for Anki flashcards!<br>
-<b>Important note: during development. Current state allows you to retrieve a needed file, but quality of definitions is not that good yet.</b>
+This app allows you to turn your Kindle english vocabulary (word you highlighted) along with definitions and context for each word into a .csv file, which can be then used for Anki flashcards!<br><br>
+Important note: Definitions for only "open-class words": nouns, verbs, adjectives, and adverbs. Thus, excluded words include determiners, prepositions, pronouns, conjunctions, and particles.
 ## Live link:
 https://kindle-vocab-to-anki.vercel.app/
 ## Built with:
-Typescript, React, Django, Tailwind
+Typescript, React, Django (rest framework, nltk wordnet), Tailwind
+## Performance:
+Definitions are fetched out of Wordnet using nltk wordnet module: https://www.nltk.org/howto/wordnet.html, https://wordnet.princeton.edu/<br>
+Out of 755 words I had to get definitions for 19 failed - which is amazing. Among those "failed" were words like: "what", "doth", "of", etc. - not open-class words as it is required by Wordnet itself. That said, there's definitely some legitimate words Wordnet doesn't have in its database like "almshouse" or "henpeck" or real archaic ones like "vittle", which is important to keep in mind. 
 ## Instructions:
 Video version: https://www.youtube.com/watch?v=oYFIydvBSEk<br>
 1. First you need to get your looked up words out of you Kindle via USB. Fortunately, they’re stored for us at: Kindle/system/vocabulary/vocab.db. If you can’t find it, go to the main Kindle folder and search for vocab.db. It’s hiding somewhere!
