@@ -6,7 +6,6 @@ import sqlite3
 import tempfile
 import os
 import pandas
-from dictionary import word_dict
 import nltk
 nltk.download('wordnet')
 from nltk.corpus import wordnet
