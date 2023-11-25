@@ -3,3 +3,4 @@ djangorestframework
 django-cors-headers
 pandas
 gunicorn
+nltk

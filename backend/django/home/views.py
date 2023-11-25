@@ -7,6 +7,10 @@ import tempfile
 import os
 import pandas
 from dictionary import word_dict
+import nltk
+nltk.download('wordnet')
+from nltk.corpus import wordnet
+
 
 @api_view(['POST'])
 def upload_vocab(request):
@@ -44,8 +48,14 @@ def upload_vocab(request):
 
 
 def getDefinitions(row):
-    word = row['Word'].capitalize()
+    word = row['Word']
 
-    wordDef = word_dict.get(word, "definition not found")
+    # wordDef = word_dict.get(word, "definition not found")
+    synset_array = wordnet.synsets(word)
+    try:
+      definition = synset_array[1].definition()
+    except IndexError:
+      definition = 'definition not found'
+    # definition = synset_array[1].definition()
     
-    return wordDef 
+    return definition
