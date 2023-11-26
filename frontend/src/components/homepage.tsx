@@ -3,32 +3,43 @@ import { useState } from "react";
 function Homepage({ showHomepage }: {showHomepage: () => void}) {
   const [selectedFile, setSelectedFile] = useState<File>();
   const [fileDownload, setFileDownload] = useState<string | undefined>();
-  const [errorMsg, setErrorMsg] = useState();
+  const [errorMsg, setErrorMsg] = useState<string | undefined>();
+  const [uploadEffect, setUploadEffect] = useState(false);
+
+  const handleUpload = (e: React.FormEvent) => {
+    setUploadEffect(true);
+    uploadVocab(e);
+  }
 
   const uploadVocab = async(e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!selectedFile) {
+      setErrorMsg("no file provided");
+      return;
+    }
+
     const data = new FormData();
-    if (!selectedFile) return;
     data.append("file", selectedFile, "vocab.db");
 
     fetch(import.meta.env.VITE_API, { 
       method: 'POST',
       body: data,
     })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("oops some server issue occured or you chose a wrong file!");
-        }
-        return response.blob()
-      })
-      .then(blob => {
-        const url = window.URL.createObjectURL(blob);
-        setFileDownload(url)
-        })
-      .catch(error => {
-        setErrorMsg(error.message)
-      });
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("oops some server issue occured or you chose a wrong file!");
+      }
+      return response.blob();
+    })
+    .then(blob => {
+      const url = window.URL.createObjectURL(blob);
+      setFileDownload(url);
+      setErrorMsg("");
+    })
+    .catch(error => {
+      setErrorMsg(error.message);
+    });
   }
 
   return (
@@ -39,7 +50,13 @@ function Homepage({ showHomepage }: {showHomepage: () => void}) {
         <form className="flex w-full justify-center gap-3">
           <label className="px-1.5 py-3.5 rounded-xl shadow-md shadow-purple-300 border-black border border-solid hover:cursor-pointer hover:scale-110" htmlFor="dbFile">Choose a file</label>
           <input className="hidden" type="file" id="dbFile" onChange={(e) => setSelectedFile(e.target!.files?.[0])}/>
-          <button className="text-purple-700 hover:text-purple-800" type="submit" onClick={uploadVocab}>Upload</button>
+          <button 
+            className={`${uploadEffect && "animate-wiggle-more animate-ease-out animate-thrice"} text-purple-700 hover:text-purple-800 active:animate-pulse`}
+            type="submit" 
+            onClick={handleUpload} 
+            onAnimationEnd={() => setUploadEffect(false)}>
+            Upload
+          </button>
         </form>
         <span className="text-2xl">Don't know how to get it?</span>
         <span className="text-2xl">Visit&nbsp;
