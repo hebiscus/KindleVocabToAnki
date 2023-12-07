@@ -1,8 +1,6 @@
-# Kindle Vocab To Anki
+# Kindle Vocab To Anki - https://kindle-vocab-to-anki.vercel.app/
 This app allows you to turn your Kindle english vocabulary (word you highlighted) along with definitions and context for each word into a .csv file, which can be then used for Anki flashcards!<br><br>
 Important note: Definitions for only "open-class words": nouns, verbs, adjectives, and adverbs. Thus, excluded words include determiners, prepositions, pronouns, conjunctions, and particles.
-## Live link:
-https://kindle-vocab-to-anki.vercel.app/
 ## Built with:
 Typescript, React, Django (rest framework, nltk wordnet), Tailwind
 ## Performance:
