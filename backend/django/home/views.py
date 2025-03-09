@@ -1,12 +1,15 @@
-from django.http import FileResponse
-from rest_framework.response import Response
-from rest_framework import status
-from rest_framework.decorators import api_view
+import os
 import sqlite3
 import tempfile
-import os
-import pandas
+
 import nltk
+import pandas
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+from django.http import FileResponse
+
 nltk.download('wordnet')
 from nltk.corpus import wordnet
 
