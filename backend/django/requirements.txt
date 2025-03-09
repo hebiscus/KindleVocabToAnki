@@ -4,3 +4,4 @@ django-cors-headers
 pandas
 gunicorn
 nltk
+isort
