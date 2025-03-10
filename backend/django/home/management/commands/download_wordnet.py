@@ -7,6 +7,5 @@ class Command(BaseCommand):
     help = "Downloads wordnet nltk dictionary database"
 
     def handle(self, *args, **options):
-          nltk.download('wordnet')
-          self.stdout.write(self.style.SUCCESS('Successfully downloaded wordnet'))
-
+        nltk.download("wordnet")
+        self.stdout.write(self.style.SUCCESS("Successfully downloaded wordnet"))

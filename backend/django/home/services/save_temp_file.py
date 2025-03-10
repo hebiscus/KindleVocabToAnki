@@ -2,7 +2,7 @@ import tempfile
 
 
 def save_temp_file(vocab_file):
-    if vocab_file and vocab_file.name.endswith('.db'):
+    if vocab_file and vocab_file.name.endswith(".db"):
         try:
             with tempfile.NamedTemporaryFile(delete=False) as temp_file:
                 for chunk in vocab_file.chunks():
