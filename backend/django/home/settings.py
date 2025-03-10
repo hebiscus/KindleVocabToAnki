@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-kgvqh8v^*s0f*_j*gfxnd_@3!!8(b4x9o_1as7&3oozoppk@5^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".localhost", "kindleanki.fly.dev"]
+ALLOWED_HOSTS = [".localhost", "kindleanki.fly.dev", "127.0.0.1"]
 
 
 # Application definition
@@ -53,6 +53,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
+    # "http://127.0.0.1:8000",
     "http://localhost:8080",
     "http://127.0.0.1:5173",
     "http://localhost:5173",
