@@ -1,5 +1,7 @@
 import pandas as pd
+
 from home.services.get_word_definition import get_word_definition
+
 
 def generate_csv(data, file_path='result.csv'):
     df = pd.DataFrame(data, columns=["Word", "Context"])

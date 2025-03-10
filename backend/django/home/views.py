@@ -1,11 +1,14 @@
-from .services.save_temp_file import save_temp_file
-from .services.get_unique_words import get_unique_words
-from .services.generate_csv import generate_csv
-from django.http import FileResponse
-from rest_framework.response import Response
+import os
+
 from rest_framework import status
 from rest_framework.decorators import api_view
-import os
+from rest_framework.response import Response
+
+from django.http import FileResponse
+
+from .services.generate_csv import generate_csv
+from .services.get_unique_words import get_unique_words
+from .services.save_temp_file import save_temp_file
 
 
 @api_view(['POST'])

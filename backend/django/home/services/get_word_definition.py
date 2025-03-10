@@ -1,5 +1,6 @@
 from nltk.corpus import wordnet
 
+
 def get_word_definition(word):
     if " " in word:
         word = word.replace(" ", "_")

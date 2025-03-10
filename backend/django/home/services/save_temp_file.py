@@ -1,5 +1,6 @@
 import tempfile
 
+
 def save_temp_file(vocab_file):
     if vocab_file and vocab_file.name.endswith('.db'):
         try:
